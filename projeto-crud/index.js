@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const port = process.env.PORT || 3001
 const mysql = require('mysql')
+const podyParser =  require('body-parser')
 
 const connection = mysql.createConnection({
     host: '127.0.0.1',
@@ -18,6 +19,7 @@ const depedencies = {
 }
 
 app.use(express.static('public'))
+app.use(podyParser.urlencoded({extended: false}))
 
 //view engine
 app.set('views', path.join(__dirname, 'views'))
@@ -27,7 +29,7 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.use('/pessoas', pessoas({connection}))
+app.use('/pessoas', pessoas({ connection }))
 
 connection.connect(() => {
     app.listen(port, () => {

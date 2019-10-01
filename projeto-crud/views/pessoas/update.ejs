@@ -1,0 +1,29 @@
+<% include ../partials/header.ejs %>
+    
+    <h1>Editar pessoas</h1>
+    
+    <p>
+        <a href="/pessoas">Lista de pessoas</a>
+    </p>
+
+    <!-- <%= JSON.stringify(pessoa) %> -->
+
+    <form method="POST">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome" value="<%= pessoa.nome %>" placeholder="Nome">
+        </div>
+
+        <div class="form-group">
+            <label for="nascimento">Nascimento</label>
+            <input type="text" class="form-control" id="nascimento" name="nascimento" value="<%= pessoa.nascimento %>" placeholder="1988-08-04">
+          </div>
+
+          <div class="form-group">
+            <label for="cargo">Cargo</label>
+            <input type="text" class="form-control" id="cargo" name="cargo" value="<%= pessoa.cargo %>" placeholder="Cargo">
+          </div>
+        <button type="submit" class="btn btn-default">Salvar</button>
+      </form>
+
+<% include ../partials/footer.ejs %>
